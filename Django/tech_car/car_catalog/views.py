@@ -17,4 +17,5 @@ def edit_page(request):
 
 
 def admin_page(request):
-    return render(request, 'admin-page.html', {})
+    cars = Car.objects.all()
+    return render(request, 'admin-page.html', {'cars': cars})

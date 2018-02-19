@@ -12,249 +12,39 @@
     </div>
 </div>
 <div class="card-deck-wrapper">
-    <div class="card-deck mt-4">
-        <div class="card border-danger">
-            <div class="card-block">
-                <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-center">МИНИПОГРУЗЧИК АНТ750</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            Масса, кг
-                            <strong class="float-right">3140</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Высота выгрузки, мм
-                            <strong class="float-right">2330(2941)</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Объем ковша, м3
-                            <strong class="float-right">0,46</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Грузоподъемность, кг
-                            <strong class="float-right">750</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Мощность двигателя, л.с.
-                            <strong class="float-right">51</strong>
-                        </li>
-                    </ul>
+    <div class="row">
+        {% for car in cars %}
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-4">
+            <div class="card border-danger">
+                <div class="card-block">
+                    <img class="card-img-top" src="{{ car.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="text-center"> {{ car.get_category_name }}</h5>
+                        <h4 class="text-center"> {{ car.name }}</h4>
+                        <ul class="list-group list-group-flush">
+                            {% for values in car.get_char_values %} {% for value in values %}
+                            <li class="list-group-item">
+                                {{ value.name }}, {{value.unit}}
+                                <strong class="float-right">{{ value.value }}</strong>
+                            </li>
+                            {% endfor %} {% endfor %}
+                        </ul>
 
-                    <div class="row justify-content-center">
-                        <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                        <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                        <div class="row justify-content-center">
+                            <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
+                            <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card border-danger">
-            <div class="card-block">
-                <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-center">МИНИПОГРУЗЧИК АНТ750</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            Масса, кг
-                            <strong class="float-right">3140</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Высота выгрузки, мм
-                            <strong class="float-right">2330(2941)</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Объем ковша, м3
-                            <strong class="float-right">0,46</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Грузоподъемность, кг
-                            <strong class="float-right">750</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Мощность двигателя, л.с.
-                            <strong class="float-right">51</strong>
-                        </li>
-                    </ul>
-
-                    <div class="row justify-content-center">
-                        <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                        <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card border-danger">
-            <div class="card-block">
-                <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-center">МИНИПОГРУЗЧИК АНТ750</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            Масса, кг
-                            <strong class="float-right">3140</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Высота выгрузки, мм
-                            <strong class="float-right">2330(2941)</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Объем ковша, м3
-                            <strong class="float-right">0,46</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Грузоподъемность, кг
-                            <strong class="float-right">750</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Мощность двигателя, л.с.
-                            <strong class="float-right">51</strong>
-                        </li>
-                    </ul>
-
-                    <div class="row justify-content-center">
-                        <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                        <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card-deck mt-3">
-        <div class="card border-danger">
-            <div class="card-block">
-                <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-center">МИНИПОГРУЗЧИК АНТ750</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            Масса, кг
-                            <strong class="float-right">3140</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Высота выгрузки, мм
-                            <strong class="float-right">2330(2941)</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Объем ковша, м3
-                            <strong class="float-right">0,46</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Грузоподъемность, кг
-                            <strong class="float-right">750</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Мощность двигателя, л.с.
-                            <strong class="float-right">51</strong>
-                        </li>
-                    </ul>
-
-                    <div class="row justify-content-center">
-                        <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                        <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card border-danger">
-            <div class="card-block">
-                <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-center">МИНИПОГРУЗЧИК АНТ750</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            Масса, кг
-                            <strong class="float-right">3140</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Высота выгрузки, мм
-                            <strong class="float-right">2330(2941)</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Объем ковша, м3
-                            <strong class="float-right">0,46</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Грузоподъемность, кг
-                            <strong class="float-right">750</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Мощность двигателя, л.с.
-                            <strong class="float-right">51</strong>
-                        </li>
-                    </ul>
-
-                    <div class="row justify-content-center">
-                        <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                        <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card border-danger">
-            <div class="card-block">
-                <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-center">МИНИПОГРУЗЧИК АНТ750</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            Масса, кг
-                            <strong class="float-right">3140</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Высота выгрузки, мм
-                            <strong class="float-right">2330(2941)</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Объем ковша, м3
-                            <strong class="float-right">0,46</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Грузоподъемность, кг
-                            <strong class="float-right">750</strong>
-                        </li>
-                        <li class="list-group-item">
-                            Мощность двигателя, л.с.
-                            <strong class="float-right">51</strong>
-                        </li>
-                    </ul>
-
-                    <div class="row justify-content-center">
-                        <a href="/item-page.html" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                        <a href="/edit-page.html" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
