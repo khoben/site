@@ -28,11 +28,8 @@ CREATE TABLE `Car`
   `name` Varchar(128),
   `ID_mark` Bigint NOT NULL,
   `ID_category` Bigint NOT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`,`ID_mark`)
 )
-;
-
-CREATE INDEX `IX_Relationship1` ON `Car` (`ID_mark`)
 ;
 
 CREATE INDEX `IX_Relationship2` ON `Car` (`ID_category`)
@@ -48,20 +45,18 @@ CREATE TABLE `Category`
 )
 ;
 
--- Table Characteristic
+-- Table CharacteristicName
 
-CREATE TABLE `Characteristic`
+CREATE TABLE `CharacteristicName`
 (
   `ID` Bigint NOT NULL AUTO_INCREMENT,
   `name` Varchar(128),
-  `value` Varchar(128),
-  `unit` Varchar(128),
   `ID_modification` Bigint NOT NULL,
   PRIMARY KEY (`ID`)
 )
 ;
 
-CREATE INDEX `IX_Relationship5` ON `Characteristic` (`ID_modification`)
+CREATE INDEX `IX_Relationship5` ON `CharacteristicName` (`ID_modification`)
 ;
 
 -- Table Modification
@@ -71,17 +66,33 @@ CREATE TABLE `Modification`
   `ID` Bigint NOT NULL AUTO_INCREMENT,
   `name` Varchar(128),
   `ID_car` Bigint NOT NULL,
+  `ID_mark` Bigint,
   PRIMARY KEY (`ID`)
 )
 ;
 
-CREATE INDEX `IX_Relationship6` ON `Modification` (`ID_car`)
+CREATE INDEX `IX_Relationship6` ON `Modification` (`ID_car`,`ID_mark`)
+;
+
+-- Table CharacteristicValue
+
+CREATE TABLE `CharacteristicValue`
+(
+  `ID` Bigint NOT NULL AUTO_INCREMENT,
+  `value` Varchar(128),
+  `unit` Varchar(128),
+  `ID_char_name` Bigint NOT NULL,
+  PRIMARY KEY (`ID`)
+)
+;
+
+CREATE INDEX `IX_Relationship8` ON `CharacteristicValue` (`ID_char_name`)
 ;
 
 -- Create foreign keys (relationships) section ------------------------------------------------- 
 
 
-ALTER TABLE `Car` ADD CONSTRAINT `Relationship1` FOREIGN KEY (`ID_mark`) REFERENCES `Mark` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+ALTER TABLE `Car` ADD CONSTRAINT `Relationship1` FOREIGN KEY (`ID_mark`) REFERENCES `Mark` (`ID`) ON DELETE CASCADE ON UPDATE RESTRICT
 ;
 
 
@@ -89,11 +100,15 @@ ALTER TABLE `Car` ADD CONSTRAINT `Relationship2` FOREIGN KEY (`ID_category`) REF
 ;
 
 
-ALTER TABLE `Characteristic` ADD CONSTRAINT `Relationship5` FOREIGN KEY (`ID_modification`) REFERENCES `Modification` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+ALTER TABLE `CharacteristicName` ADD CONSTRAINT `Relationship5` FOREIGN KEY (`ID_modification`) REFERENCES `Modification` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
 
-ALTER TABLE `Modification` ADD CONSTRAINT `Relationship6` FOREIGN KEY (`ID_car`) REFERENCES `Car` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+ALTER TABLE `Modification` ADD CONSTRAINT `Relationship6` FOREIGN KEY (`ID_car`, `ID_mark`) REFERENCES `Car` (`ID`, `ID_mark`) ON DELETE RESTRICT ON UPDATE RESTRICT
+;
+
+
+ALTER TABLE `CharacteristicValue` ADD CONSTRAINT `Relationship8` FOREIGN KEY (`ID_char_name`) REFERENCES `CharacteristicName` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
 
