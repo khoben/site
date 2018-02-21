@@ -6,46 +6,36 @@
     <div class="col">
         <h5>Каталог / Подробнее</h5>
     </div>
+    <div class="col">
+        <a href="{% url 'car_edit' id=car.id %}" class="btn btn-outline-primary float-right" role="button">Редактировать</a>
+    </div>
 </div>
 <div class="row mt-5">
-    <div class="col">
+    <div class="col-sm-4">
         <!-- Content here -->
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <h3 class="text-center">МИНИПОГРУЗЧИК АНТ750</h3>
+                <h4 class="text-center">{{ car.get_category_name }}</h4>
+                <h3 class="text-center">{{ car.name }}</h3>
             </li>
-            <li class="list-group-item">
-                Масса, кг
-                <strong class="float-right">3140</strong>
+            {% for values in car.get_char_values %} {% for value in values %}
+            <li class="row list-group-item">
+                {% if value.unit %} {{ value.name }}, {{value.unit}} {% else %} {{value.name}} {% endif %}
+                <strong class="float-right">{{ value.value }}</strong>
             </li>
-            <li class="list-group-item">
-                Высота выгрузки, мм
-                <strong class="float-right">2330(2941)</strong>
-            </li>
-            <li class="list-group-item">
-                Объем ковша, м3
-                <strong class="float-right">0,46</strong>
-            </li>
-            <li class="list-group-item">
-                Грузоподъемность, кг
-                <strong class="float-right">750</strong>
-            </li>
-            <li class="list-group-item">
-                Мощность двигателя, л.с.
-                <strong class="float-right">51</strong>
-            </li>
+            {% endfor %} {% endfor %}
         </ul>
     </div>
-    <div class="col-12 col-sm-6">
+    <div class="col-xs-12 col-sm-6 ml-4">
 
         <div class="card">
-            <img class="card-img-top" src="assets/items/ant750.jpeg" alt="Card image cap">
+            <img class="card-img-top" src="{{ car.img_path.url }}" alt="Card image cap">
         </div>
 
     </div>
 </div>
 <div class="row mt-3">
-    <h3 class="text-center">Технические характеристики минипогрузчика АНТ750 AHT</h3>
+    <h3 class="text-center">Технические характеристики {{ car.name }}</h3>
 
     <div class="card mt-3">
         <div class="card-body">

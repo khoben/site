@@ -8,30 +8,31 @@
         <h5>Каталог</h5>
     </div>
 </div>
-<div class="card-deck-wrapper">
-    <div class="row">
+<div class="container mt-4">
+    <div class="card-columns">
         {% for car in cars %}
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-4">
-            <div class="card border-danger">
-                <div class="card-block">
-                    <img class="card-img-top" src="{{ car.image.url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="text-center"> {{ car.get_category_name }}</h5>
-                        <h4 class="text-center"> {{ car.name }}</h4>
-                        <ul class="list-group list-group-flush">
-                            {% for values in car.get_char_values %} {% for value in values %}
-                            <li class="list-group-item">
-                                {{ value.name }}, {{value.unit}}
-                                <strong class="float-right">{{ value.value }}</strong>
-                            </li>
-                            {% endfor %} {% endfor %}
-                        </ul>
 
-                        <div class="text-center">
-                            <a href="/item-page.html" class="btn btn-danger mt-3">Подробнее</a>
-                        </div>
+        <div class="card border-danger mt-2">
+            <div class="card-block">
+                <img class="card-img-top img-fluid" src="{{ car.img_path.url }}" alt="Card image cap">
+            </div>
+            <div class="card-block px-3">
+                <div class="card-body">
+                    <h5 class="text-center"> {{ car.get_category_name }}</h5>
+                    <h4 class="text-center"> {{ car.name }}</h4>
+                    <ul class="list-group list-group-flush">
+                        {% for values in car.get_char_values %} {% for value in values %}
+                        <li class="row list-group-item">
+                            {% if value.unit %} {{ value.name }}, {{value.unit}} {% else %} {{value.name}} {% endif %}
+                            <strong class="float-right">{{ value.value }}</strong>
+                        </li>
+                        {% endfor %} {% endfor %}
+                    </ul>
 
+                    <div class="text-center">
+                        <a href="{% url 'car_details' id=car.id %}" class="btn btn-danger mt-3">Подробнее</a>
                     </div>
+
                 </div>
             </div>
         </div>
