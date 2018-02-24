@@ -33,7 +33,7 @@ class __TwigTemplate_8d16ddbaaf59024f0bed1b906526c014466e9fbc61c43b3b196d743b2ed
         <h5>Администрирование</h5>
     </div>
     <div class=\"col\">
-        <a href=\"#\" class=\"btn btn-outline-primary float-right\" role=\"button\">Добавить</a>
+        <a href=\"/add\" class=\"btn btn-outline-primary float-right\" role=\"button\">Добавить</a>
     </div>
 </div>
 <div class=\"container\">
@@ -71,10 +71,16 @@ class __TwigTemplate_8d16ddbaaf59024f0bed1b906526c014466e9fbc61c43b3b196d743b2ed
             // line 36
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["car"], "ID", array()), "html", null, true);
             echo "\" class=\"btn btn-danger mt-3 ml-3\">Подробнее</a>
-                                <a href=\"#\" title=\"Редактировать\" class=\"btn btn-outline-success mt-3 ml-3\">
+                                <a href=\"/edit/car/";
+            // line 37
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["car"], "ID", array()), "html", null, true);
+            echo "\" title=\"Редактировать\" class=\"btn btn-outline-success mt-3 ml-3\">
                                     <i class=\"fas fa-edit\"></i>
                                 </a>
-                                <a href=\"#\" title=\"Удалить\" class=\"btn btn-outline-primary mt-3 ml-3\">
+                                <a href=\"/delete/car/";
+            // line 40
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["car"], "ID", array()), "html", null, true);
+            echo "\" title=\"Удалить\" class=\"btn btn-outline-primary mt-3 ml-3\">
                                     <i class=\"fas fa-trash\"></i>
                                 </a>
                             </div>
@@ -107,7 +113,7 @@ class __TwigTemplate_8d16ddbaaf59024f0bed1b906526c014466e9fbc61c43b3b196d743b2ed
 
     public function getDebugInfo()
     {
-        return array (  92 => 50,  72 => 36,  67 => 33,  61 => 25,  53 => 20,  48 => 17,  44 => 16,  31 => 5,  28 => 4,  11 => 1,);
+        return array (  98 => 50,  82 => 40,  76 => 37,  72 => 36,  67 => 33,  61 => 25,  53 => 20,  48 => 17,  44 => 16,  31 => 5,  28 => 4,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -121,7 +127,7 @@ class __TwigTemplate_8d16ddbaaf59024f0bed1b906526c014466e9fbc61c43b3b196d743b2ed
         <h5>Администрирование</h5>
     </div>
     <div class=\"col\">
-        <a href=\"#\" class=\"btn btn-outline-primary float-right\" role=\"button\">Добавить</a>
+        <a href=\"/add\" class=\"btn btn-outline-primary float-right\" role=\"button\">Добавить</a>
     </div>
 </div>
 <div class=\"container\">
@@ -148,10 +154,10 @@ class __TwigTemplate_8d16ddbaaf59024f0bed1b906526c014466e9fbc61c43b3b196d743b2ed
 
                             <div class=\"row justify-content-center\">
                                 <a href=\"/car/{{ car.ID }}\" class=\"btn btn-danger mt-3 ml-3\">Подробнее</a>
-                                <a href=\"#\" title=\"Редактировать\" class=\"btn btn-outline-success mt-3 ml-3\">
+                                <a href=\"/edit/car/{{ car.ID }}\" title=\"Редактировать\" class=\"btn btn-outline-success mt-3 ml-3\">
                                     <i class=\"fas fa-edit\"></i>
                                 </a>
-                                <a href=\"#\" title=\"Удалить\" class=\"btn btn-outline-primary mt-3 ml-3\">
+                                <a href=\"/delete/car/{{ car.ID }}\" title=\"Удалить\" class=\"btn btn-outline-primary mt-3 ml-3\">
                                     <i class=\"fas fa-trash\"></i>
                                 </a>
                             </div>

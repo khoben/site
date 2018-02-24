@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/mystyles.css">
     <link rel="stylesheet" href="/static/css/fontawesome/fontawesome-all.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-select/bootstrap-select.css">
     <link rel="shortcut icon" href="/static/assets/favicon.png" type="image/png">
 
     <title>Каталог спец. техники</title>
@@ -52,9 +53,13 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/static/js/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/popper/popper.js"></script>
-    <script src="/static/js/bootstrap/bootstrap.min.js"></script>
+    {% block javascripts %}
+        <script src="/static/js/jquery/jquery.min.js"></script>
+        <script src="/static/js/popper/popper.js"></script>
+        <script src="/static/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/static/js/bootstrap-select/bootstrap-select.js"></script>
+    {% endblock %}
+    
 </body>
 
 </html>

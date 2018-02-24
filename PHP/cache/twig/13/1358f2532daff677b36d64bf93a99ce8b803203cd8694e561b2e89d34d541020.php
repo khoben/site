@@ -11,6 +11,7 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
 
         $this->blocks = array(
             'content' => array($this, 'block_content'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -29,6 +30,7 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
     <link rel=\"stylesheet\" href=\"/static/css/bootstrap/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"/static/css/mystyles.css\">
     <link rel=\"stylesheet\" href=\"/static/css/fontawesome/fontawesome-all.css\">
+    <link rel=\"stylesheet\" href=\"/static/css/bootstrap-select/bootstrap-select.css\">
     <link rel=\"shortcut icon\" href=\"/static/assets/favicon.png\" type=\"image/png\">
 
     <title>Каталог спец. техники</title>
@@ -63,9 +65,9 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
 
     <div class=\"container mt-3\">
         ";
-        // line 46
-        $this->displayBlock('content', $context, $blocks);
         // line 47
+        $this->displayBlock('content', $context, $blocks);
+        // line 48
         echo "    </div>
 
     <footer>
@@ -74,18 +76,31 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src=\"/static/js/jquery/jquery-3.3.1.min.js\"></script>
-    <script src=\"/static/js/popper/popper.js\"></script>
-    <script src=\"/static/js/bootstrap/bootstrap.min.js\"></script>
+    ";
+        // line 56
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 62
+        echo "    
 </body>
 
 </html>";
     }
 
-    // line 46
+    // line 47
     public function block_content($context, array $blocks = array())
     {
         echo " ";
+    }
+
+    // line 56
+    public function block_javascripts($context, array $blocks = array())
+    {
+        // line 57
+        echo "        <script src=\"/static/js/jquery/jquery.min.js\"></script>
+        <script src=\"/static/js/popper/popper.js\"></script>
+        <script src=\"/static/js/bootstrap/bootstrap.min.js\"></script>
+        <script src=\"/static/js/bootstrap-select/bootstrap-select.js\"></script>
+    ";
     }
 
     public function getTemplateName()
@@ -95,7 +110,7 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
 
     public function getDebugInfo()
     {
-        return array (  86 => 46,  69 => 47,  67 => 46,  20 => 1,);
+        return array (  99 => 57,  96 => 56,  90 => 47,  83 => 62,  81 => 56,  71 => 48,  69 => 47,  21 => 1,);
     }
 
     public function getSourceContext()
@@ -112,6 +127,7 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
     <link rel=\"stylesheet\" href=\"/static/css/bootstrap/bootstrap.min.css\">
     <link rel=\"stylesheet\" href=\"/static/css/mystyles.css\">
     <link rel=\"stylesheet\" href=\"/static/css/fontawesome/fontawesome-all.css\">
+    <link rel=\"stylesheet\" href=\"/static/css/bootstrap-select/bootstrap-select.css\">
     <link rel=\"shortcut icon\" href=\"/static/assets/favicon.png\" type=\"image/png\">
 
     <title>Каталог спец. техники</title>
@@ -154,9 +170,13 @@ class __TwigTemplate_8f75f0babc0a609f0af9908f824b8382f74ae30aae925738333c64233c4
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src=\"/static/js/jquery/jquery-3.3.1.min.js\"></script>
-    <script src=\"/static/js/popper/popper.js\"></script>
-    <script src=\"/static/js/bootstrap/bootstrap.min.js\"></script>
+    {% block javascripts %}
+        <script src=\"/static/js/jquery/jquery.min.js\"></script>
+        <script src=\"/static/js/popper/popper.js\"></script>
+        <script src=\"/static/js/bootstrap/bootstrap.min.js\"></script>
+        <script src=\"/static/js/bootstrap-select/bootstrap-select.js\"></script>
+    {% endblock %}
+    
 </body>
 
 </html>", "base.twig", "D:\\git\\site\\PHP\\src\\views\\base.twig");

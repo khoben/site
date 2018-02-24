@@ -7,52 +7,84 @@
 </div>
 
 <div class="row justify-content-center mt-3">
-    
+    {% if img_folder is defined %}
     <div class="col-xs-4 col-md-5">
         <div class="card">
-            <img class="card-img-top" src="" alt="Card image cap">
+            <img class="card-img-top" src="{{ img_folder }}{{car.img_path}}" alt="Card image cap">
         </div>
     </div>
+    {% endif %}
   
     <div class="col">
         <form role="form" method="POST" enctype="multipart/form-data" class="row form">
             <div class="col-12 mb-4">
                 <h2>Основное</h2>
                 <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Наименование</label>
+                        <label class="col-sm-3 col-form-label mr-3">Наименование</label>
                         <div class="col-sm-5">
-                            <input name="name" type="text" class="form-control" value="АНТ750">
+                            <input name="name" type="text" class="form-control" value="{% if car is defined %}{{car.name}}{% endif %}">
                         </div>
                 </div>
                 <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Изображение</label>
+                        <label class="col-sm-3 col-form-label mr-3">Изображение</label>
                         <div class="col-sm-5">
-                            <input id="imageInput" type="file" style="display:none;" />
-                            <input name="img_path" class="btn btn-primary" type="button" value="Выбрать изображение" onclick="document.getElementById('imageInput').click();" />
+                            <input name = "img_path" id="imageInput" type="file" value="{% if car is defined %}{{ car.img_path }}{% endif %}" />
                         </div>
                 </div>
                 <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Производитель</label>
+                        <label class="col-sm-3 col-form-label mr-3">Производитель</label>
                         <div class="col-sm-5">
-                            <input name="mark" type="text" class="form-control" value="АНТ750">
+                            <select name="mark" class="selectpicker" data-style="btn-outline-dark">
+                                    {% for mark in marks %}
+                                      <option value="{{mark.ID}}"> {{ mark.name }} </option>
+                                    {% endfor %}
+                            </select>
                         </div>
                 </div>
                 <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Категория</label>
+                        <label class="col-sm-3 col-form-label mr-3">Категория</label>
                         <div class="col-sm-5">
-                            <input name="category" type="text" class="form-control" value="АНТ750">
+                            <select name="category" class="selectpicker" data-style="btn-outline-dark">
+                                    {% for category in categories %}
+                                      <option  value="{{category.ID}}">{{ category.name }}</option>
+                                    {% endfor %}
+                            </select>
+
                         </div>
                 </div>
                 
             </div>
             <div class="col-12 mb-4">
                 <h3>Характеристики</h3>
-                
+                {% for mod in mods %}
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label mr-3">{{ mod.name }}{% if mod.unit is defined %}, {{mod.unit}} {% endif %}</label>
+                        <div class="col-sm-5">
+                            <input name="{{ mod.ID_char_name }}" type="text" class="form-control" 
+                            value="{% if exist_mods is defined %}{% set break = false %}{% for exist_mod in exist_mods if not break %}{% if exist_mod.name == mod.name %}{{exist_mod.value}}{% set break = true %}{% endif %}{% endfor %}{% endif %}">
+                        </div>
+                    </div>
+                {% endfor %}
                 <button type="submit" class="btn btn-primary">{{btnName}}</button>
             </div>
         </form>
     </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }} 
+
+{% if car is defined %}
+<script>
+        jQuery(document).ready(function($){
+            jQuery('select[name=mark]').val({{car.ID_mark}});
+            jQuery('select[name=category]').val({{car.ID_category}});
+            jQuery('.selectpicker').selectpicker('refresh');
+            jQuery('.selectpicker').selectpicker('refresh');
+    });
+</script>
+{% endif %}
 
 {% endblock %}

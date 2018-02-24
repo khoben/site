@@ -33,11 +33,14 @@ class __TwigTemplate_44812c979b24f62c12d8d91af9f15bbe90bfd9b94a7ec8be1aa940e975c
         <h5>Каталог / Подробнее</h5>
     </div>
     <div class=\"col\">
-        <a href=\"#\" class=\"btn btn-outline-primary float-right\" role=\"button\">Редактировать</a>
+        <a href=\"/edit/car/";
+        // line 9
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["car"]) || array_key_exists("car", $context) ? $context["car"] : (function () { throw new Twig_Error_Runtime('Variable "car" does not exist.', 9, $this->getSourceContext()); })()), "ID", array()), "html", null, true);
+        echo "\" class=\"btn btn-outline-primary float-right\" role=\"button\">Редактировать</a>
     </div>
 </div>
 <div class=\"row mt-5\">
-    <div class=\"col-sm-4\">
+    <div class=\"col-xs-12 col-sm-10 col-md-6 mb-3\">
         <ul class=\"list-group list-group-flush\">
             <li class=\"list-group-item\">
                 <h4 class=\"text-center\">";
@@ -82,7 +85,7 @@ class __TwigTemplate_44812c979b24f62c12d8d91af9f15bbe90bfd9b94a7ec8be1aa940e975c
         // line 25
         echo "        </ul>
     </div>
-    <div class=\"col-xs-12 col-sm-6 ml-4\">
+    <div class=\"col-xs-12 col-sm-8 col-md-5 ml-4\">
 
         <div class=\"card\">
             <img class=\"card-img-top\" src=\"";
@@ -127,7 +130,7 @@ class __TwigTemplate_44812c979b24f62c12d8d91af9f15bbe90bfd9b94a7ec8be1aa940e975c
 
     public function getDebugInfo()
     {
-        return array (  100 => 36,  90 => 30,  83 => 25,  73 => 22,  61 => 21,  58 => 20,  54 => 19,  49 => 17,  45 => 16,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  103 => 36,  93 => 30,  86 => 25,  76 => 22,  64 => 21,  61 => 20,  57 => 19,  52 => 17,  48 => 16,  38 => 9,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -140,11 +143,11 @@ class __TwigTemplate_44812c979b24f62c12d8d91af9f15bbe90bfd9b94a7ec8be1aa940e975c
         <h5>Каталог / Подробнее</h5>
     </div>
     <div class=\"col\">
-        <a href=\"#\" class=\"btn btn-outline-primary float-right\" role=\"button\">Редактировать</a>
+        <a href=\"/edit/car/{{ car.ID }}\" class=\"btn btn-outline-primary float-right\" role=\"button\">Редактировать</a>
     </div>
 </div>
 <div class=\"row mt-5\">
-    <div class=\"col-sm-4\">
+    <div class=\"col-xs-12 col-sm-10 col-md-6 mb-3\">
         <ul class=\"list-group list-group-flush\">
             <li class=\"list-group-item\">
                 <h4 class=\"text-center\">{{ car.category }}</h4>
@@ -158,7 +161,7 @@ class __TwigTemplate_44812c979b24f62c12d8d91af9f15bbe90bfd9b94a7ec8be1aa940e975c
             {% endfor %}
         </ul>
     </div>
-    <div class=\"col-xs-12 col-sm-6 ml-4\">
+    <div class=\"col-xs-12 col-sm-8 col-md-5 ml-4\">
 
         <div class=\"card\">
             <img class=\"card-img-top\" src=\"{{img_folder}}{{ car.img_path }}\" alt=\"Card image cap\">

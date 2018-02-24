@@ -40,3 +40,9 @@
       column-count: 3;
   }
 }
+
+.btn-secondary {
+  color: #000;
+  background-color: #ffffff;
+  border-color: #c4c8cb;
+}
