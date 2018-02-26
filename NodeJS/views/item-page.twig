@@ -1,0 +1,50 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h5>Каталог / Подробнее</h5>
+    </div>
+    <div class="col">
+        <a href="/edit/car/{{ car.ID }}" class="btn btn-outline-primary float-right" role="button">Редактировать</a>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-xs-12 col-sm-10 col-md-6 mb-3">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h4 class="text-center">{{ car.category }}</h4>
+                <h3 class="text-center">{{ car.name }}</h3>
+            </li>
+            {% for mod in mods %}
+            <li class="row list-group-item">
+                {% if mod.unit %} {{ mod.name }}, {{mod.unit}} {% else %} {{mod.name}} {% endif %}
+                <strong class="float-right">{{ mod.value }}</strong>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-5 ml-4">
+
+        <div class="card">
+            <img class="card-img-top" src="{{img_folder}}{{ car.img_path }}" alt="Card image cap">
+        </div>
+
+    </div>
+</div>
+<div class="row mt-3">
+    <h3 class="text-center">Технические характеристики {{ car.name }}</h3>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <p class="card-text">Рабочая масса, кг 3140 Масса без ковша, кг 2990 Объем ковша, м3 0.46 Грузоподъемность, кг 750 Опрокидывающая
+                нагрузка, кг 1500 Мак скорость движения, км/ч 12 Тяговое усилие, кН 18 Расход топлива, л/час 4,5 Емкость
+                аккумулятора, км/ч 12/90 В/Ач Емкость аккумулятора, км/ч 12/90 В/Ач Полная мощность двигателя, кВт/лс 38/51
+                Масса двигателя, кг 184 Трансмиссия Гидростатическая Привод Роликовая цепь со звездочками в картере цепной
+                передачи Тормоза Гидравлические встроенные в гидромотор Шины 10/75x15.3
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

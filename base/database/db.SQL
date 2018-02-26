@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Фев 21 2018 г., 18:28
+-- Время создания: Фев 24 2018 г., 17:55
 -- Версия сервера: 10.1.30-MariaDB
 -- Версия PHP: 7.2.2
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `spec_car_tech`
 --
-CREATE DATABASE IF NOT EXISTS `spec_car_tech` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `spec_car_tech`;
 
 -- --------------------------------------------------------
 
@@ -43,11 +41,11 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`ID`, `name`, `img_path`, `ID_mark`, `ID_category`) VALUES
-(1, 'ANT 750', 'item_pics/ant750_J1R7vtb.jpeg', 1, 1),
-(2, 'TCM FHG15T37', 'item_pics/_-_.png', 2, 1),
-(20, '12', 'item_pics/ant750_P5MCHjG.jpeg', 1, 1),
-(21, 'newnew', 'item_pics/ant750_aoDTLBf.jpeg', 1, 1),
-(22, 'test', 'item_pics/PNG_transparency_demonstration_1_moRTOiw.png', 1, 1);
+(1, 'ANT 750                        ', 'item_pics/ant750_J1R7vtb.jpeg', 2, 1),
+(2, 'TCM FHG15T37   ', '/item_pics/kek.jpg', 2, 1),
+(36, 'my', '/item_pics/_-_.png', 1, 1),
+(37, '3434', '/item_pics/minipogruzchik_ant1000.png', 2, 1),
+(38, '44', '/item_pics/_-_.png', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -83,13 +81,13 @@ CREATE TABLE `characteristicname` (
 --
 
 INSERT INTO `characteristicname` (`ID`, `name`) VALUES
-(1, 'Масса'),
-(2, 'Грузоподъемность'),
 (3, 'Высота выгрузки'),
-(4, 'Объем ковша'),
+(2, 'Грузоподъемность'),
+(1, 'Масса'),
 (5, 'Мощность двигателя'),
-(6, 'Тип шин'),
-(7, 'Тип двигателя');
+(4, 'Объем ковша'),
+(7, 'Тип двигателя'),
+(6, 'Тип шин');
 
 -- --------------------------------------------------------
 
@@ -112,7 +110,7 @@ CREATE TABLE `characteristicvalue` (
 INSERT INTO `characteristicvalue` (`ID`, `value`, `unit`, `ID_char_name`, `ID_modification`) VALUES
 (1, '3140', 'кг', 1, 1),
 (2, '2330', 'мм', 3, 1),
-(3, '0.46', 'м3', 4, 1),
+(3, '0,46', 'м3', 4, 1),
 (4, '750', 'кг', 2, 1),
 (5, '2610', 'кг', 1, 2),
 (6, '1500', 'кг', 2, 2),
@@ -120,15 +118,17 @@ INSERT INTO `characteristicvalue` (`ID`, `value`, `unit`, `ID_char_name`, `ID_mo
 (8, '2500', 'мм', 3, 2),
 (11, 'пневмо/CE', '', 6, 2),
 (12, 'газобензиновый', '', 7, 2),
-(19, '51', '', 5, 1),
-(22, '1', '', 6, 1),
-(23, '2', '', 7, 1),
-(25, '22234', '', 1, 5),
-(26, '1', '', 1, 6),
-(27, '2', '', 3, 6),
-(28, '3', '', 4, 6),
-(29, '4', '', 2, 6),
-(30, '228', '', 1, 7);
+(19, '51', 'л. с.', 5, 1),
+(22, 'Резина', '', 6, 1),
+(23, 'Дизельный', '', 7, 1),
+(40, '6557', NULL, 4, 17),
+(41, '22', NULL, 3, 17),
+(42, '33', NULL, 2, 17),
+(43, '64646', NULL, 1, 17),
+(44, '200', NULL, 3, 18),
+(45, '88', NULL, 6, 17),
+(46, '444', NULL, 2, 19),
+(47, '444', NULL, 3, 19);
 
 -- --------------------------------------------------------
 
@@ -168,9 +168,9 @@ CREATE TABLE `modification` (
 INSERT INTO `modification` (`ID`, `name`, `ID_car`) VALUES
 (1, 'Модификация АНТ750', 1),
 (2, 'Модификация TCM FHG15T3', 2),
-(5, 'Модификация для 12', 20),
-(6, 'Модификация для newnew', 21),
-(7, 'Модификация для test', 22);
+(17, 'Модификация для my', 36),
+(18, 'Модификация для ', 37),
+(19, 'Модификация для ', 38);
 
 --
 -- Индексы сохранённых таблиц
@@ -194,7 +194,8 @@ ALTER TABLE `category`
 -- Индексы таблицы `characteristicname`
 --
 ALTER TABLE `characteristicname`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Индексы таблицы `characteristicvalue`
@@ -225,7 +226,7 @@ ALTER TABLE `modification`
 -- AUTO_INCREMENT для таблицы `car`
 --
 ALTER TABLE `car`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT для таблицы `category`
@@ -243,7 +244,7 @@ ALTER TABLE `characteristicname`
 -- AUTO_INCREMENT для таблицы `characteristicvalue`
 --
 ALTER TABLE `characteristicvalue`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT для таблицы `mark`
@@ -255,7 +256,7 @@ ALTER TABLE `mark`
 -- AUTO_INCREMENT для таблицы `modification`
 --
 ALTER TABLE `modification`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
