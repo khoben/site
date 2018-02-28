@@ -7,7 +7,7 @@
 </div>
 
 <div class="row justify-content-center mt-3">
-    {% if img_folder is defined %}
+    {% if car is defined %}
     <div class="col-xs-4 col-md-5">
         <div class="card">
             <img class="card-img-top" src="{{ img_folder }}{{car.img_path}}" alt="Card image cap">
@@ -61,7 +61,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label mr-3">{{ mod.name }}{% if mod.unit is defined %}, {{mod.unit}} {% endif %}</label>
                         <div class="col-sm-5">
-                            <input name="{{ mod.ID_char_name }}" type="text" class="form-control" 
+                            <input name="{{ mod.ID }}" type="text" class="form-control" 
                             value="{% if exist_mods is defined %}{% set break = false %}{% for exist_mod in exist_mods if not break %}{% if exist_mod.name == mod.name %}{{exist_mod.value}}{% set break = true %}{% endif %}{% endfor %}{% endif %}">
                         </div>
                     </div>
