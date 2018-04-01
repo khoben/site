@@ -3,7 +3,7 @@ $('#imageInput').on('change', function () {
 });
 
 $("#myForm button").click(function (event) {
-    event.preventDefault()// cancel form submission
+    event.preventDefault()
     if ($(this).attr("value") == "imgLoadBtn") {
 
         var files = $('#imageInput').get(0).files,
@@ -30,6 +30,17 @@ $("#myForm button").click(function (event) {
         $("#myForm").submit();
     }
 });
+
+function deleteCarFromAdminPage() {
+    id = $(this).data("id");
+    $.ajax({
+        url: '/script.cgi',
+        type: 'DELETE',
+        success: function (result) {
+            // Do something with the result
+        }
+    });
+}
 
 function uploadFiles(formData) {
     $.ajax({

@@ -332,6 +332,13 @@ app.get('/admin', (req, res) => {
     });
 });
 
+app.delete('/admin', (req, res) => {
+    car = new Car();
+    car.set('id', req.body.id);
+    car.remove();
+    return res.status(200).send();
+});
+
 //done
 app.get('/delete/car/:id', (req, res) => {
     car = new Car();

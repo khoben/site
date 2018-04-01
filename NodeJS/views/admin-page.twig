@@ -2,52 +2,81 @@
 {# Content here #}
 
 {% block content %}
-<div class="row">
-    <div class="col">
-        <h5>Администрирование</h5>
+    <div class="row">
+        <div class="col">
+            <h5>Администрирование</h5>
+        </div>
+        <div class="col">
+            <a href="/add" class="btn btn-outline-primary float-right" role="button">Добавить</a>
+        </div>
     </div>
-    <div class="col">
-        <a href="/add" class="btn btn-outline-primary float-right" role="button">Добавить</a>
-    </div>
-</div>
-<div class="container">
-    <div class="card-deck-wrapper">
-        <div class="row">
-            {% for car in cars %}
-            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 mt-4">
-                <div class="card border-danger h-100 justify-content-center">
-                    <div class="card-block">
-                        <img class="card-img-top" src="{{ img_folder }}{{ car.img_path }}" alt="Card image cap">
-                    </div>
-                    <div class="card-block px-3">
-                        <div class="card-body">
-                            {# <h5 class="text-center"> {{ car.get_category_name }}</h5> #}
-                            <h4 class="text-center"> {{ car.name }}</h4>
-                            <ul class="list-group list-group-flush">
-                                {# {% for values in car.get_char_values %} {% for value in values %}
+    <div class="container">
+        <div class="card-deck-wrapper">
+            <div class="row">
+                {% for car in cars %}
+                    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 mt-4" id="car-{{ car.ID }}">
+                        <div class="card border-danger h-100 justify-content-center">
+                            <div class="card-block">
+                                <img class="card-img-top" src="{{ img_folder }}{{ car.img_path }}" alt="Card image cap">
+                            </div>
+                            <div class="card-block px-3">
+                                <div class="card-body">
+                                    {# <h5 class="text-center"> {{ car.get_category_name }}</h5> #}
+                                    <h4 class="text-center">
+                                        {{ car.name }}</h4>
+                                    <ul class="list-group list-group-flush">
+                                        {# {% for values in car.get_char_values %} {% for value in values %}
                                 <li class="row list-group-item">
                                     {% if value.unit %} {{ value.name }}, {{value.unit}} {% else %} {{value.name}} {% endif %}
                                     <strong class="float-right">{{ value.value }}</strong>
                                 </li>
                                 {% endfor %} {% endfor %} #}
-                            </ul>
+                                    </ul>
 
-                            <div class="row justify-content-center">
-                                <a href="/car/{{ car.ID }}" class="btn btn-danger mt-3 ml-3">Подробнее</a>
-                                <a href="/edit/car/{{ car.ID }}" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="/delete/car/{{ car.ID }}" title="Удалить" class="btn btn-outline-primary mt-3 ml-3">
+                                    <div class="row justify-content-center">
+                                        <a href="/car/{{ car.ID }}" class="btn btn-danger mt-3 ml-3">Подробнее</a>
+                                        <a href="/edit/car/{{ car.ID }}" title="Редактировать" class="btn btn-outline-success mt-3 ml-3">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {# <button class="btn btn-outline-primary mt-3 ml-3 btn-ajax-delete" data-id="{{ car.ID }}">
                                     <i class="fas fa-trash"></i>
-                                </a>
+                                </button>
+                                <a href="/delete/car/{{car.ID}}" class="btn btn-outline-primary mt-3 ml-3" data-id="{{ car.ID }}">
+                                    <i class="fas fa-trash"></i>
+                                </a> #}
+                                        <button type="button" class="btn btn-outline-primary mt-3 ml-3" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal fade" id="exampleModal" style="z-index: 9999;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Подтверждение удаления</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                    <button type="button" class="btn btn-primary btn-ajax-delete" data-id="{{ car.ID }}" data-dismiss="modal">Удалить</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="/static/js/ajax_car.js"></script>
+
 {% endblock %}
