@@ -46,3 +46,16 @@
   background-color: #ffffff;
   border-color: #c4c8cb;
 }
+
+.fileinput-filename {
+  display: inline-block;
+  overflow: hidden;
+  /* vertical-align: middle; */
+  /* new lines */
+  width: 100%;
+  position: absolute;
+  left: 0;
+  padding-left: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
